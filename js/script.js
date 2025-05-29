@@ -132,7 +132,7 @@ class VisualEffects {
 
     setupAdvancedHovers() {
         // 3D tilt effect for cards
-        document.querySelectorAll('.team-card, .problem-card, .solutions-text').forEach(card => {
+        document.querySelectorAll('.team-card, .problem-card, .solutions-main, .tech-highlight-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
