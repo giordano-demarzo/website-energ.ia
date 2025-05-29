@@ -575,20 +575,18 @@ body {
     font-size: 0.9rem;
 }
 
-/* Solutions Section - Enhanced */
+/* Solutions Section - UPDATED SIMPLIFIED VERSION */
 .solutions-content {
     margin-top: 3rem;
 }
 
+/* Hide the old grid layout */
 .solutions-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
-    margin-top: 3rem;
+    display: none;
 }
 
-.solutions-text {
+/* Main technology description */
+.solutions-main {
     background: white;
     padding: 2.5rem;
     border-radius: var(--radius-xl);
@@ -596,9 +594,10 @@ body {
     transition: var(--transition);
     position: relative;
     overflow: hidden;
+    margin-bottom: 2rem;
 }
 
-.solutions-text::before {
+.solutions-main::before {
     content: '';
     position: absolute;
     top: 0;
@@ -610,38 +609,216 @@ body {
     transition: transform 0.3s ease;
 }
 
-.solutions-text:hover {
+.solutions-main:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-lg);
 }
 
-.solutions-text:hover::before {
+.solutions-main:hover::before {
     transform: scaleX(1);
 }
 
-.solutions-text h3 {
+.solutions-main h3 {
     font-size: 1.375rem;
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     color: var(--text-primary);
+    text-align: center;
 }
 
-.solutions-text p {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
+/* Grid layout for the three solution blocks */
+.solutions-text-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
 }
 
-.solutions-text p:last-of-type {
-    margin-bottom: 0;
+.solution-block {
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+    transition: var(--transition);
 }
 
-.solutions-text strong {
+.solution-block:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    background: white;
+}
+
+.solution-block h4 {
+    font-size: 1.125rem;
+    font-weight: 700;
     color: var(--primary);
-    font-weight: 600;
+    margin-bottom: 1rem;
 }
 
+.solution-block p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Unified performance box */
+.solutions-performance {
+    background: white;
+    padding: 2.5rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-light);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.solutions-performance::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-secondary);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.solutions-performance:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.solutions-performance:hover::before {
+    transform: scaleX(1);
+}
+
+.solutions-performance h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.solutions-performance > p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+/* Performance grid layout */
+.performance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Stats section within performance box */
+.performance-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-lg);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.performance-stats::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    animation: movePattern 20s linear infinite;
+}
+
+.performance-stats .stat-item {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.performance-stats .stat-number {
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.performance-stats .stat-label {
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+/* Features section within performance box */
+.performance-features {
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+}
+
+.performance-features .features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.performance-features .features-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.performance-features .features-list li:last-child {
+    border-bottom: none;
+}
+
+.performance-features .feature-check {
+    width: 1.25rem;
+    height: 1.25rem;
+    background: var(--success);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+}
+
+/* Keep the old solution text styles for compatibility but hide them */
+.solutions-text {
+    display: none;
+}
+
+.solutions-visual {
+    display: none;
+}
+
+/* Old stats and features styles - hidden */
+.solutions-stats {
+    display: none;
+}
+
+.solutions-features {
+    display: none;
+}
+
+/* Technology highlights - keep existing styles */
 .tech-highlights {
     display: flex;
     flex-direction: column;
@@ -712,120 +889,6 @@ body {
     line-height: 1.6;
     margin: 0;
 }
-
-.solutions-visual {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    position: relative;
-}
-
-.solutions-stats {
-    background: var(--gradient-primary);
-    color: white;
-    padding: 2.5rem;
-    border-radius: var(--radius-xl);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.solutions-stats::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    animation: movePattern 20s linear infinite;
-}
-
-.solutions-stats h4 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    position: relative;
-}
-
-.solutions-stats p {
-    font-size: 1rem;
-    opacity: 0.9;
-    margin-bottom: 1.5rem;
-    position: relative;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    position: relative;
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 2rem;
-    font-weight: 800;
-    line-height: 1;
-    margin-bottom: 0.5rem;
-}
-
-.stat-label {
-    font-size: 0.85rem;
-    opacity: 0.8;
-}
-
-.solutions-features {
-    background: white;
-    padding: 2rem;
-    border-radius: var(--radius-xl);
-    border: 1px solid var(--border-light);
-}
-
-.solutions-features h4 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 1.5rem;
-}
-
-.features-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.features-list li {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid var(--border-light);
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-}
-
-.features-list li:last-child {
-    border-bottom: none;
-}
-
-.feature-check {
-    width: 1.25rem;
-    height: 1.25rem;
-    background: var(--success);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 0.75rem;
-    flex-shrink: 0;
-}
-
-
 
 /* Team Section with Interactive Cards */
 .team-grid {
@@ -1326,17 +1389,12 @@ body {
     }
     
     /* Mobile adjustments for cards */
-    .problem-card,
-    .solutions-text {
+    .problem-card {
         padding: 1.5rem;
     }
     
     .problem-description {
         font-size: 0.85rem;
-    }
-    
-    .solutions-text p {
-        font-size: 0.9rem;
     }
     
     .hero-title {
@@ -1355,10 +1413,40 @@ body {
         font-size: 0.85rem;
     }
     
-    /* Solutions section mobile layout */
-    .solutions-grid {
+    /* Solutions section mobile layout - UPDATED */
+    .solutions-main {
+        padding: 2rem;
+    }
+    
+    .solutions-text-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
+    }
+    
+    .solution-block {
+        padding: 1.25rem;
+    }
+    
+    .solutions-performance {
+        padding: 2rem;
+    }
+    
+    .performance-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .performance-stats {
+        padding: 1.25rem;
+        gap: 1rem;
+    }
+    
+    .performance-stats .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .performance-features {
+        padding: 1.25rem;
     }
     
     .tech-highlights {
@@ -1366,23 +1454,6 @@ body {
     }
     
     .tech-highlight {
-        padding: 1.5rem;
-    }
-    
-    .solutions-stats {
-        padding: 2rem;
-    }
-    
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-    
-    .stat-number {
-        font-size: 1.5rem;
-    }
-    
-    .solutions-features {
         padding: 1.5rem;
     }
 }
@@ -1393,7 +1464,12 @@ body {
         gap: 1.5rem;
     }
     
-    .solutions-grid {
-        gap: 2rem;
+    .solutions-text-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .performance-grid {
+        gap: 1.5rem;
     }
 }
