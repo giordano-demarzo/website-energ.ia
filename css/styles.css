@@ -198,7 +198,7 @@ body {
 .nav-cta {
     background: var(--gradient-primary);
     color: white;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1.25rem;
     border-radius: var(--radius-md);
     text-decoration: none;
     font-weight: 600;
@@ -206,6 +206,7 @@ body {
     box-shadow: var(--shadow-sm);
     position: relative;
     overflow: hidden;
+    font-size: 0.9rem;
 }
 
 .nav-cta::before {
@@ -285,7 +286,7 @@ body {
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: -0.02em;
@@ -306,7 +307,7 @@ body {
 }
 
 .hero-subtitle {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--text-secondary);
     max-width: 700px;
     margin: 0 auto 1.5rem;
@@ -316,7 +317,7 @@ body {
 }
 
 .hero-tagline {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--primary);
     margin-bottom: 2rem;
@@ -337,7 +338,7 @@ body {
 .btn-primary {
     background: var(--gradient-primary);
     color: white;
-    padding: 0.75rem 1.5rem;
+    padding: 0.875rem 1.75rem;
     border-radius: var(--radius-lg);
     text-decoration: none;
     font-weight: 600;
@@ -373,7 +374,7 @@ body {
 .btn-secondary {
     background: white;
     color: var(--text-primary);
-    padding: 0.75rem 1.5rem;
+    padding: 0.875rem 1.75rem;
     border-radius: var(--radius-lg);
     text-decoration: none;
     font-weight: 600;
@@ -1249,11 +1250,19 @@ body {
     }
     
     .hero-title {
-        font-size: clamp(2rem, 6vw, 3rem);
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
     }
     
     .section-title {
         font-size: clamp(1.5rem, 4vw, 2rem);
+    }
+    
+    .hero-tagline {
+        font-size: 1rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.85rem;
     }
 }
 
