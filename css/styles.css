@@ -40,8 +40,8 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg-primary);
     color: var(--text-primary);
-    line-height: 1.7;
-    font-size: 16px;
+    line-height: 1.6;
+    font-size: 14px;
     overflow-x: hidden;
 }
 
@@ -230,7 +230,7 @@ body {
 
 /* Hero Section with Interactive Elements */
 .hero {
-    padding: 8rem 2rem 6rem;
+    padding: 6rem 2rem 4rem;
     max-width: 1280px;
     margin: 0 auto;
     text-align: center;
@@ -267,11 +267,11 @@ body {
     gap: 0.5rem;
     background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
     color: var(--text-secondary);
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1rem;
     border-radius: 9999px;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-weight: 500;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     transition: var(--transition);
     border: 1px solid var(--border-light);
     position: relative;
@@ -285,11 +285,11 @@ body {
 }
 
 .hero-title {
-    font-size: clamp(3rem, 8vw, 5rem);
+    font-size: clamp(2.5rem, 6vw, 4rem);
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary) 50%, var(--secondary) 100%);
     background-clip: text;
     -webkit-background-clip: text;
@@ -306,20 +306,20 @@ body {
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: var(--text-secondary);
     max-width: 700px;
-    margin: 0 auto 2rem;
+    margin: 0 auto 1.5rem;
     line-height: 1.6;
     position: relative;
     z-index: 2;
 }
 
 .hero-tagline {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 600;
     color: var(--primary);
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     position: relative;
     z-index: 2;
 }
@@ -329,7 +329,7 @@ body {
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     position: relative;
     z-index: 2;
 }
@@ -337,11 +337,11 @@ body {
 .btn-primary {
     background: var(--gradient-primary);
     color: white;
-    padding: 1rem 2rem;
+    padding: 0.75rem 1.5rem;
     border-radius: var(--radius-lg);
     text-decoration: none;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.9rem;
     transition: var(--transition);
     box-shadow: var(--shadow-md);
     border: none;
@@ -373,11 +373,11 @@ body {
 .btn-secondary {
     background: white;
     color: var(--text-primary);
-    padding: 1rem 2rem;
+    padding: 0.75rem 1.5rem;
     border-radius: var(--radius-lg);
     text-decoration: none;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.9rem;
     transition: var(--transition);
     border: 1px solid var(--border-medium);
     position: relative;
@@ -419,7 +419,7 @@ body {
 
 .stat {
     text-align: center;
-    padding: 1.5rem;
+    padding: 1.25rem;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     border-radius: var(--radius-xl);
@@ -451,7 +451,7 @@ body {
 }
 
 .stat-number {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 800;
     color: var(--primary);
     line-height: 1;
@@ -460,13 +460,13 @@ body {
 
 .stat-label {
     color: var(--text-secondary);
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     font-weight: 500;
 }
 
 /* Sections */
 .section {
-    padding: 6rem 2rem;
+    padding: 4rem 2rem;
     position: relative;
 }
 
@@ -494,7 +494,7 @@ body {
 
 .section-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
@@ -504,16 +504,16 @@ body {
     display: inline-block;
     background: var(--bg-tertiary);
     color: var(--primary);
-    padding: 0.5rem 1rem;
+    padding: 0.375rem 0.75rem;
     border-radius: 9999px;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     border: 1px solid var(--border-light);
 }
 
 .section-title {
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
     font-weight: 800;
     line-height: 1.2;
     letter-spacing: -0.025em;
@@ -521,9 +521,9 @@ body {
 }
 
 .section-description {
-    font-size: 1.125rem;
+    font-size: 1rem;
     color: var(--text-secondary);
-    line-height: 1.7;
+    line-height: 1.6;
 }
 
 /* Problem Section */
@@ -749,7 +749,7 @@ body {
 .team-card {
     background: white;
     border-radius: var(--radius-xl);
-    padding: 2.5rem;
+    padding: 2rem;
     border: 1px solid var(--border-light);
     transition: var(--transition);
     text-align: center;
@@ -793,23 +793,23 @@ body {
 }
 
 .team-avatar {
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
     background: var(--gradient-primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: white;
-    margin: 0 auto 1.5rem;
+    margin: 0 auto 1.25rem;
     position: relative;
     z-index: 2;
 }
 
 .team-name {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
     transition: var(--transition);
@@ -818,7 +818,7 @@ body {
 .team-role {
     color: var(--primary);
     font-weight: 600;
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     margin-bottom: 1rem;
     transition: var(--transition);
 }
@@ -834,9 +834,9 @@ body {
 .expertise-tag {
     background: var(--bg-tertiary);
     color: var(--primary);
-    padding: 0.25rem 0.75rem;
+    padding: 0.2rem 0.6rem;
     border-radius: 9999px;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
     border: 1px solid var(--border-light);
     transition: var(--transition);
@@ -844,7 +844,7 @@ body {
 
 .team-bio {
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     line-height: 1.6;
     text-align: left;
     transition: var(--transition);
@@ -853,7 +853,7 @@ body {
 /* About Section */
 .about-content {
     background: white;
-    padding: 3rem;
+    padding: 2.5rem;
     border-radius: var(--radius-xl);
     border: 1px solid var(--border-light);
     transition: var(--transition);
@@ -884,17 +884,17 @@ body {
 }
 
 .about-text h3 {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     color: var(--text-primary);
 }
 
 .about-text p {
-    font-size: 1.125rem;
-    line-height: 1.8;
+    font-size: 1rem;
+    line-height: 1.7;
     color: var(--text-secondary);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
 }
 
 .about-text p:last-child {
@@ -1025,7 +1025,7 @@ body {
     text-align: center;
     border-radius: var(--radius-xl);
     margin: 0 2rem;
-    padding: 4rem 2rem;
+    padding: 3rem 2rem;
     position: relative;
     overflow: hidden;
 }
@@ -1047,14 +1047,14 @@ body {
 }
 
 .cta-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 800;
     margin-bottom: 1rem;
     position: relative;
 }
 
 .cta-description {
-    font-size: 1.125rem;
+    font-size: 1rem;
     opacity: 0.9;
     margin-bottom: 2rem;
     max-width: 600px;
@@ -1066,11 +1066,11 @@ body {
 .cta-button {
     background: white;
     color: var(--primary);
-    padding: 1rem 2rem;
+    padding: 0.875rem 1.75rem;
     border-radius: var(--radius-lg);
     text-decoration: none;
     font-weight: 700;
-    font-size: 1.125rem;
+    font-size: 1rem;
     transition: var(--transition);
     display: inline-block;
     position: relative;
@@ -1085,7 +1085,7 @@ body {
 /* Footer */
 .footer {
     background: var(--bg-secondary);
-    padding: 3rem 2rem 2rem;
+    padding: 2.5rem 2rem 1.5rem;
     border-top: 1px solid var(--border-light);
 }
 
@@ -1206,11 +1206,11 @@ body {
     }
     
     .hero {
-        padding: 6rem 1rem 4rem;
+        padding: 5rem 1rem 3rem;
     }
     
     .section {
-        padding: 4rem 1rem;
+        padding: 3rem 1rem;
     }
     
     .stats {
@@ -1240,12 +1240,20 @@ body {
     /* Mobile adjustments for cards */
     .problem-card,
     .product-card {
-        padding: 1.5rem;
+        padding: 1.25rem;
     }
     
     .product-description,
     .problem-description {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
+    }
+    
+    .hero-title {
+        font-size: clamp(2rem, 6vw, 3rem);
+    }
+    
+    .section-title {
+        font-size: clamp(1.5rem, 4vw, 2rem);
     }
 }
 
