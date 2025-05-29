@@ -132,7 +132,7 @@ class VisualEffects {
 
     setupAdvancedHovers() {
         // 3D tilt effect for cards
-        document.querySelectorAll('.product-card, .team-card, .problem-card').forEach(card => {
+        document.querySelectorAll('.team-card, .problem-card, .solutions-text').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -327,7 +327,7 @@ class Analytics {
 
     setupEventTracking() {
         // Track button clicks
-        document.querySelectorAll('.btn-primary, .btn-secondary, .product-link').forEach(button => {
+        document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
             button.addEventListener('click', (e) => {
                 const buttonText = e.target.textContent.trim();
                 this.trackEvent('button_click', {
