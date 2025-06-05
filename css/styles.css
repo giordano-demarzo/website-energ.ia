@@ -542,7 +542,7 @@ body {
     border: 1px solid var(--border-light);
     transition: var(--transition);
     position: relative;
-    border-left: 4px solid var(--warning);
+    border-left: 4px solid var(--secondary);
 }
 
 .problem-card:hover {
@@ -879,7 +879,7 @@ body {
 .tech-highlight h4 {
     font-size: 1.125rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: var(--secondary);
     margin: 0;
 }
 
