@@ -213,10 +213,17 @@ class VisualEffects {
     }
 }
 
-// Form Handler Class
+// Updated Form Handler Class with EmailJS
 class FormHandler {
     constructor() {
+        this.setupEmailJS();
         this.setupContactForm();
+    }
+
+    setupEmailJS() {
+        // Initialize EmailJS with your public key
+        // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
+        emailjs.init('yUvsv0sE-ec8pcewF');
     }
 
     setupContactForm() {
@@ -226,7 +233,7 @@ class FormHandler {
         }
     }
 
-    handleSubmit(e) {
+    async handleSubmit(e) {
         e.preventDefault();
         
         // Get form data
@@ -239,11 +246,53 @@ class FormHandler {
             return;
         }
 
-        // Simulate form submission
-        this.showNotification('Richiesta inviata con successo! Ti contatteremo presto.', 'success');
-        
-        // Reset form
-        e.target.reset();
+        // Email validation
+        if (!this.isValidEmail(data.email)) {
+            this.showNotification('Inserisci un indirizzo email valido', 'error');
+            return;
+        }
+
+        // Show loading state
+        const submitButton = e.target.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        submitButton.textContent = 'Invio in corso...';
+        submitButton.disabled = true;
+
+        try {
+            // Send email using EmailJS
+            const result = await emailjs.send(
+                'service_rc7762e',  // Replace with your EmailJS service ID
+                'template_8uv5a71', // Replace with your EmailJS template ID
+                {
+                    to_email: 'info@energ-ia.it',
+                    from_name: data.nome,
+                    from_email: data.email,
+                    company: data.azienda,
+                    phone: data.telefono || 'Non fornito',
+                    message: data.messaggio || 'Richiesta di contatto',
+                    reply_to: data.email
+                }
+            );
+
+            console.log('Email sent successfully:', result);
+            this.showNotification('Richiesta inviata con successo! Ti contatteremo presto.', 'success');
+            
+            // Reset form
+            e.target.reset();
+
+        } catch (error) {
+            console.error('Error sending email:', error);
+            this.showNotification('Errore nell\'invio. Riprova più tardi o contattaci direttamente.', 'error');
+        } finally {
+            // Reset button state
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+        }
+    }
+
+    isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
     }
 
     showNotification(message, type = 'info') {

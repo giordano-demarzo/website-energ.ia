@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Energ.IA - Startup Innovativa per la Transizione Energetica</title>
+    <title>energ.IA - Startup Innovativa per la Transizione Energetica</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <!-- Animated Background -->
     <div class="animated-bg">
         <div class="floating-shapes" id="floatingShapes"></div>
@@ -21,13 +22,13 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">Energ.IA</a>
+            <a href="#" class="logo">energ.IA</a>
             <ul class="nav-links">
                 <li><a href="#problem">Il Problema</a></li>
                 <li><a href="#solutions">Soluzioni</a></li>
                 <li><a href="#team">Team</a></li>
                 <li><a href="#faq">FAQ</a></li>
-                <li><a href="#contact" class="nav-cta">Richiedi Demo</a></li>
+                <li><a href="#contact">Richiedi Demo</a></li>
             </ul>
         </div>
     </nav>
@@ -35,7 +36,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-badge">
-            🇮🇹 Startup Innovativa • 🤖 Intelligenza Artificiale • 🌱 Transizione Energetica
+           Startup Innovativa • Intelligenza Artificiale • Transizione Energetica
         </div>
         
         <h1 class="hero-title">
@@ -43,12 +44,10 @@
             Energy Transition
         </h1>
         
-        <p class="hero-tagline">
-            Da settimane di analisi a poche ore con l'Intelligenza Artificiale
-        </p>
+        
         
         <p class="hero-subtitle">
-            Energ.IA è una startup innovativa che automatizza l'intero ciclo di sviluppo dei progetti 
+            energ.IA è una startup innovativa che automatizza l'intero ciclo di sviluppo dei progetti 
             di energie rinnovabili attraverso algoritmi proprietari di AI, machine learning e computer vision, 
             riducendo drasticamente tempi e costi operativi.
         </p>
@@ -88,7 +87,6 @@
             
             <div class="problem-grid">
                 <div class="problem-card animate-on-scroll">
-                    <div class="problem-icon">⏱️</div>
                     <h3 class="problem-title">Tempi di Sviluppo Lunghi</h3>
                     <p class="problem-description">
                         Lo sviluppo di un progetto FER richiede mediamente 2-3 anni, dalla ricerca del sito 
@@ -97,7 +95,6 @@
                 </div>
                 
                 <div class="problem-card animate-on-scroll">
-                    <div class="problem-icon">📊</div>
                     <h3 class="problem-title">Complessità Normativa</h3>
                     <p class="problem-description">
                         Le normative cambiano continuamente a livello regionale e nazionale. Rimanere aggiornati 
@@ -106,7 +103,6 @@
                 </div>
                 
                 <div class="problem-card animate-on-scroll">
-                    <div class="problem-icon">💰</div>
                     <h3 class="problem-title">Costi Elevati</h3>
                     <p class="problem-description">
                         Gli studi di fattibilità, le analisi ambientali, e le consulenze specialistiche 
@@ -115,7 +111,7 @@
                 </div>
                 
                 <div class="problem-card animate-on-scroll">
-                    <div class="problem-icon">🎯</div>
+                    <!-- div class="problem-icon">🎯</div -->
                     <h3 class="problem-title">Analisi Territoriali Limitate</h3>
                     <p class="problem-description">
                         L'identificazione di aree idonee si basa su analisi manuali limitate, perdendo 
@@ -182,7 +178,7 @@
             <div class="tech-highlights animate-on-scroll">
                 <div class="tech-highlight">
                     <div class="tech-highlight-header">
-                        <div class="tech-icon">🔍</div>
+                        <!--div class="tech-icon">🔍</div --> 
                         <h4>Computer Vision</h4>
                     </div>
                     <p> I nostri vision models analizzano automaticamente dati satellitari, 
@@ -191,7 +187,6 @@
                 </div>
                 <div class="tech-highlight">
                     <div class="tech-highlight-header">
-                        <div class="tech-icon">🧠</div>
                         <h4>Large Language Models</h4>
                     </div>
                     <p>Utilizziamo large language models specificamente addestrati per interpretare 
@@ -201,7 +196,6 @@
                 </div>
                 <div class="tech-highlight">
                     <div class="tech-highlight-header">
-                        <div class="tech-icon">📊</div>
                         <h4>Big Data Analytics</h4>
                     </div>
                     <p>La nostra piattaforma integra e analizza enormi dataset provenienti 
@@ -219,7 +213,7 @@
         <div class="container">
             <div class="section-header animate-on-scroll">
                 <div class="section-badge">Team di Eccellenza</div>
-                <h2 class="section-title">Il Team dietro Energ.IA</h2>
+                <h2 class="section-title">Il Team dietro energ.IA</h2>
                 <p class="section-description">
                     Un team multidisciplinare che unisce ricerca scientifica d'avanguardia ed esperienza 
                     pratica nel settore energetico, con oltre 35 pubblicazioni scientifiche e decenni 
@@ -231,7 +225,7 @@
                 <div class="team-card animate-on-scroll">
                     <div class="team-avatar">AB</div>
                     <h3 class="team-name">Alessandro Bellina</h3>
-                    <p class="team-role">Co-Fondatore</p>
+                    <p class="team-role">Partner</p>
                     <div class="team-expertise">
                         <span class="expertise-tag">Data Science</span>
                         <span class="expertise-tag">AI & Machine Learning</span>
@@ -247,7 +241,7 @@
                 <div class="team-card animate-on-scroll">
                     <div class="team-avatar">GM</div>
                     <h3 class="team-name">Giordano De Marzo</h3>
-                    <p class="team-role">Co-Fondatore</p>
+                    <p class="team-role">Partner</p>
                     <div class="team-expertise">
                         <span class="expertise-tag">Data Science</span>
                         <span class="expertise-tag">AI & Machine Learning</span>
@@ -262,7 +256,7 @@
                 <div class="team-card animate-on-scroll">
                     <div class="team-avatar">LB</div>
                     <h3 class="team-name">Lorenzo Baldelli</h3>
-                    <p class="team-role">Co-Fondatore</p>
+                    <p class="team-role">Partner</p>
                     <div class="team-expertise">
                         <span class="expertise-tag">Diritto Aziendale</span>
                         <span class="expertise-tag">Sviluppo Progetti</span>
@@ -278,7 +272,7 @@
                 <div class="team-card animate-on-scroll">
                     <div class="team-avatar">PG</div>
                     <h3 class="team-name">Pierluigi Ginolfi</h3>
-                    <p class="team-role">Co-Fondatore e CEO</p>
+                    <p class="team-role">Partner</p>
                     <div class="team-expertise">
                         <span class="expertise-tag">Energie Rinnovabili</span>
                         <span class="expertise-tag">Project Management</span>
@@ -294,14 +288,14 @@
                 <div class="team-card animate-on-scroll">
                     <div class="team-avatar">SP</div>
                     <h3 class="team-name">Simone Petruzzi</h3>
-                    <p class="team-role">Consulente AI</p>
+                    <p class="team-role">Consulente</p>
                     <div class="team-expertise">
                         <span class="expertise-tag">Azure</span>
                         <span class="expertise-tag">Data Science</span>
                     </div>
                     <p class="team-bio">
                         PhD student in Data Science presso "La Sapienza" di Roma. Specializzato in soluzioni basate su Intelligenza Artificiale, sviluppo di large language models e 
-                        implementazione di soluzioni enterprise con Azure. Contribuisce allo sviluppo dell'architettura AI di Energ.IA.
+                        implementazione di soluzioni enterprise con Azure. Contribuisce allo sviluppo dell'architettura AI di energ.IA.
                     </p>
                 </div>
             </div>
@@ -396,14 +390,7 @@
                             📧 Email
                         </h4>
                         <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-                            info@energia-startup.com
-                        </p>
-                        
-                        <h4 style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">
-                            🕒 Disponibilità
-                        </h4>
-                        <p style="color: var(--text-secondary);">
-                            Lun-Ven 9:00-18:00 CET
+                            info@energ-ia.it
                         </p>
                     </div>
                 </div>
@@ -457,7 +444,7 @@
                 <h2 class="cta-title">Il futuro dello sviluppo FER è qui</h2>
                 <p class="cta-description">
                     Unisciti alla rivoluzione dell'energia rinnovabile. Trasforma la complessità in opportunità 
-                    e accelera i tuoi progetti con l'intelligenza artificiale di Energ.IA.
+                    e accelera i tuoi progetti con l'intelligenza artificiale di energ.IA.
                 </p>
                 <a href="#contact" class="cta-button">Inizia Oggi Stesso</a>
             </div>
@@ -467,7 +454,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-logo">Energ.IA</div>
+            <div class="footer-logo">energ.IA</div>
             <div class="footer-links">
                 <a href="#problem">Il Problema</a>
                 <a href="#solutions">Soluzioni</a>
@@ -476,7 +463,7 @@
                 <a href="#contact">Contatti</a>
             </div>
             <p class="footer-text">
-                © 2025 Energ.IA Startup Innovativa. Rivoluzionando lo sviluppo FER con l'Intelligenza Artificiale.
+                © 2025 energ.IA Startup Innovativa. Rivoluzionando lo sviluppo FER con l'Intelligenza Artificiale.
             </p>
         </div>
     </footer>
