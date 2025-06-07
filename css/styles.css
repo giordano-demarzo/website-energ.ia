@@ -133,12 +133,23 @@ body {
 }
 
 .logo {
-    font-weight: 800;
-    font-size: 1.5rem;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 700; /* Slightly lighter than 800 for better readability */
+    font-size: 1.6rem; /* Slightly larger */
     color: var(--primary);
     text-decoration: none;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.02em;
     position: relative;
+}
+
+/* Style the .IA part differently */
+.logo .ia-part {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    font-size: 1.1em;
 }
 
 .logo::before {
@@ -288,7 +299,7 @@ body {
 .hero-title {
     font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 800;
-    line-height: 1.1;
+    line-height: 1.2;
     letter-spacing: -0.02em;
     margin-bottom: 1rem;
     background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary) 50%, var(--secondary) 100%);
