@@ -1483,10 +1483,6 @@ body {
         gap: 0.5rem;
     }
     
-    .nav-right {
-        gap: 0.5rem;
-    }
-    
     .nav-links {
         display: none;
     }
@@ -1637,10 +1633,6 @@ body {
     }
     
     .nav-container {
-        gap: 1rem;
-    }
-    
-    .nav-right {
         gap: 1rem;
     }
     

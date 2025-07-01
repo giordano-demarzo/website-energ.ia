@@ -17,7 +17,7 @@ class LanguageSwitcher {
     detectCurrentLanguage() {
         // Detect language based on current page URL
         const path = window.location.pathname;
-        if (path.includes('-en.html') || path.includes('/en/')) {
+        if (path.startsWith('/en/') || path === '/en') {
             return 'en';
         }
         return 'it';
@@ -26,6 +26,9 @@ class LanguageSwitcher {
     createLanguageSwitcher() {
         const navbar = document.querySelector('.nav-container');
         if (!navbar) return;
+
+        // Check if language switcher already exists
+        if (document.getElementById('langToggle')) return;
 
         // Create language switcher container
         const langSwitcher = document.createElement('div');
@@ -48,19 +51,24 @@ class LanguageSwitcher {
             </div>
         `;
 
-        // Create a wrapper for nav-links and language switcher
-        const navLinks = navbar.querySelector('.nav-links');
-        const navRight = document.createElement('div');
-        navRight.className = 'nav-right';
+        // Check if .nav-right wrapper already exists
+        let navRight = navbar.querySelector('.nav-right');
         
-        // Move nav-links into the wrapper
-        navRight.appendChild(navLinks);
+        if (!navRight) {
+            // Create wrapper if it doesn't exist (for English version)
+            const navLinks = navbar.querySelector('.nav-links');
+            navRight = document.createElement('div');
+            navRight.className = 'nav-right';
+            
+            // Move nav-links into the wrapper
+            navRight.appendChild(navLinks);
+            
+            // Insert the wrapper into navbar
+            navbar.appendChild(navRight);
+        }
         
-        // Add language switcher to the wrapper
+        // Add language switcher to the existing or newly created wrapper
         navRight.appendChild(langSwitcher);
-        
-        // Insert the wrapper into navbar
-        navbar.appendChild(navRight);
 
         this.setupLanguageSwitcherEvents();
     }
@@ -103,30 +111,17 @@ class LanguageSwitcher {
     }
 
     switchLanguage(newLang) {
-        const currentPath = window.location.pathname;
         const currentSearch = window.location.search;
         const currentHash = window.location.hash;
         
         let newPath;
         
         if (newLang === 'en') {
-            // Switch to English
-            if (currentPath.includes('index.html') || currentPath.endsWith('/')) {
-                newPath = currentPath.replace('index.html', 'index-en.html');
-                if (currentPath.endsWith('/')) {
-                    newPath = currentPath + 'index-en.html';
-                }
-            } else {
-                newPath = currentPath.replace('.html', '-en.html');
-            }
+            // Switch to English - go to /en/
+            newPath = '/en/';
         } else {
-            // Switch to Italian
-            newPath = currentPath.replace('-en.html', '.html');
-            if (newPath.includes('index.html') && newPath !== currentPath) {
-                // Keep as is
-            } else if (!newPath.includes('.html')) {
-                newPath = newPath + '/index.html';
-            }
+            // Switch to Italian - go to root /
+            newPath = '/';
         }
 
         // Store language preference
@@ -166,7 +161,7 @@ class LanguageSwitcher {
         try {
             const preferred = localStorage.getItem('preferredLanguage');
             if (preferred) {
-                const currentLang = window.location.pathname.includes('-en.') ? 'en' : 'it';
+                const currentLang = window.location.pathname.startsWith('/en/') ? 'en' : 'it';
                 if (preferred !== currentLang) {
                     // Auto-redirect to preferred language if different
                     const switcher = new LanguageSwitcher();
@@ -418,7 +413,7 @@ class FormHandler {
         const data = Object.fromEntries(formData);
         
         // Simple validation - detect language for error messages
-        const isEnglish = window.location.pathname.includes('-en.');
+        const isEnglish = window.location.pathname.startsWith('/en/');
         const messages = {
             fillRequired: isEnglish ? 'Please fill in all required fields' : 'Compila tutti i campi obbligatori',
             invalidEmail: isEnglish ? 'Please enter a valid email address' : 'Inserisci un indirizzo email valido',
