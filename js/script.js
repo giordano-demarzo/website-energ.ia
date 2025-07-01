@@ -1,7 +1,184 @@
 /**
  * Energ.IA Website JavaScript
- * Advanced visual effects and interactions
+ * Advanced visual effects and interactions with Language Switcher
  */
+
+class LanguageSwitcher {
+    constructor() {
+        this.currentLang = this.detectCurrentLanguage();
+        this.init();
+    }
+
+    init() {
+        this.createLanguageSwitcher();
+        this.updateLanguageSwitcher();
+    }
+
+    detectCurrentLanguage() {
+        // Detect language based on current page URL
+        const path = window.location.pathname;
+        if (path.includes('-en.html') || path.includes('/en/')) {
+            return 'en';
+        }
+        return 'it';
+    }
+
+    createLanguageSwitcher() {
+        const navbar = document.querySelector('.nav-container');
+        if (!navbar) return;
+
+        // Create language switcher container
+        const langSwitcher = document.createElement('div');
+        langSwitcher.className = 'language-switcher';
+        langSwitcher.innerHTML = `
+            <button class="lang-btn" id="langToggle" aria-label="Switch Language">
+                <span class="lang-flag" id="langFlag">🇮🇹</span>
+                <span class="lang-text" id="langText">IT</span>
+                <span class="lang-arrow">⌄</span>
+            </button>
+            <div class="lang-dropdown" id="langDropdown">
+                <a href="#" class="lang-option" data-lang="it">
+                    <span class="lang-flag">🇮🇹</span>
+                    <span>Italiano</span>
+                </a>
+                <a href="#" class="lang-option" data-lang="en">
+                    <span class="lang-flag">🇬🇧</span>
+                    <span>English</span>
+                </a>
+            </div>
+        `;
+
+        // Create a wrapper for nav-links and language switcher
+        const navLinks = navbar.querySelector('.nav-links');
+        const navRight = document.createElement('div');
+        navRight.className = 'nav-right';
+        
+        // Move nav-links into the wrapper
+        navRight.appendChild(navLinks);
+        
+        // Add language switcher to the wrapper
+        navRight.appendChild(langSwitcher);
+        
+        // Insert the wrapper into navbar
+        navbar.appendChild(navRight);
+
+        this.setupLanguageSwitcherEvents();
+    }
+
+    setupLanguageSwitcherEvents() {
+        const langToggle = document.getElementById('langToggle');
+        const langDropdown = document.getElementById('langDropdown');
+        const langOptions = document.querySelectorAll('.lang-option');
+
+        // Toggle dropdown
+        langToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langDropdown.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', () => {
+            langDropdown.classList.remove('show');
+        });
+
+        // Handle language selection
+        langOptions.forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const selectedLang = option.dataset.lang;
+                this.switchLanguage(selectedLang);
+                langDropdown.classList.remove('show');
+            });
+        });
+
+        // Keyboard navigation
+        langToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                langDropdown.classList.toggle('show');
+            }
+        });
+    }
+
+    switchLanguage(newLang) {
+        const currentPath = window.location.pathname;
+        const currentSearch = window.location.search;
+        const currentHash = window.location.hash;
+        
+        let newPath;
+        
+        if (newLang === 'en') {
+            // Switch to English
+            if (currentPath.includes('index.html') || currentPath.endsWith('/')) {
+                newPath = currentPath.replace('index.html', 'index-en.html');
+                if (currentPath.endsWith('/')) {
+                    newPath = currentPath + 'index-en.html';
+                }
+            } else {
+                newPath = currentPath.replace('.html', '-en.html');
+            }
+        } else {
+            // Switch to Italian
+            newPath = currentPath.replace('-en.html', '.html');
+            if (newPath.includes('index.html') && newPath !== currentPath) {
+                // Keep as is
+            } else if (!newPath.includes('.html')) {
+                newPath = newPath + '/index.html';
+            }
+        }
+
+        // Store language preference
+        try {
+            localStorage.setItem('preferredLanguage', newLang);
+        } catch (e) {
+            // Fallback if localStorage is not available
+            console.log('Language preference not stored');
+        }
+
+        // Navigate to new page
+        window.location.href = newPath + currentSearch + currentHash;
+    }
+
+    updateLanguageSwitcher() {
+        const langFlag = document.getElementById('langFlag');
+        const langText = document.getElementById('langText');
+        
+        if (!langFlag || !langText) return;
+
+        if (this.currentLang === 'en') {
+            langFlag.textContent = '🇬🇧';
+            langText.textContent = 'EN';
+        } else {
+            langFlag.textContent = '🇮🇹';
+            langText.textContent = 'IT';
+        }
+
+        // Update active state in dropdown
+        document.querySelectorAll('.lang-option').forEach(option => {
+            option.classList.toggle('active', option.dataset.lang === this.currentLang);
+        });
+    }
+
+    // Check for stored language preference on page load
+    static checkLanguagePreference() {
+        try {
+            const preferred = localStorage.getItem('preferredLanguage');
+            if (preferred) {
+                const currentLang = window.location.pathname.includes('-en.') ? 'en' : 'it';
+                if (preferred !== currentLang) {
+                    // Auto-redirect to preferred language if different
+                    const switcher = new LanguageSwitcher();
+                    // Uncomment the line below if you want auto-redirect
+                    // switcher.switchLanguage(preferred);
+                }
+            }
+        } catch (e) {
+            console.log('Could not check language preference');
+        }
+    }
+}
 
 class VisualEffects {
     constructor() {
@@ -240,22 +417,31 @@ class FormHandler {
         const formData = new FormData(e.target);
         const data = Object.fromEntries(formData);
         
-        // Simple validation
+        // Simple validation - detect language for error messages
+        const isEnglish = window.location.pathname.includes('-en.');
+        const messages = {
+            fillRequired: isEnglish ? 'Please fill in all required fields' : 'Compila tutti i campi obbligatori',
+            invalidEmail: isEnglish ? 'Please enter a valid email address' : 'Inserisci un indirizzo email valido',
+            sending: isEnglish ? 'Sending...' : 'Invio in corso...',
+            success: isEnglish ? 'Request sent successfully! We will contact you soon.' : 'Richiesta inviata con successo! Ti contatteremo presto.',
+            error: isEnglish ? 'Error sending. Please try again later or contact us directly.' : 'Errore nell\'invio. Riprova più tardi o contattaci direttamente.'
+        };
+
         if (!data.nome || !data.email || !data.azienda) {
-            this.showNotification('Compila tutti i campi obbligatori', 'error');
+            this.showNotification(messages.fillRequired, 'error');
             return;
         }
 
         // Email validation
         if (!this.isValidEmail(data.email)) {
-            this.showNotification('Inserisci un indirizzo email valido', 'error');
+            this.showNotification(messages.invalidEmail, 'error');
             return;
         }
 
         // Show loading state
         const submitButton = e.target.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;
-        submitButton.textContent = 'Invio in corso...';
+        submitButton.textContent = messages.sending;
         submitButton.disabled = true;
 
         try {
@@ -268,21 +454,21 @@ class FormHandler {
                     from_name: data.nome,
                     from_email: data.email,
                     company: data.azienda,
-                    phone: data.telefono || 'Non fornito',
-                    message: data.messaggio || 'Richiesta di contatto',
+                    phone: data.telefono || (isEnglish ? 'Not provided' : 'Non fornito'),
+                    message: data.messaggio || (isEnglish ? 'Contact request' : 'Richiesta di contatto'),
                     reply_to: data.email
                 }
             );
 
             console.log('Email sent successfully:', result);
-            this.showNotification('Richiesta inviata con successo! Ti contatteremo presto.', 'success');
+            this.showNotification(messages.success, 'success');
             
             // Reset form
             e.target.reset();
 
         } catch (error) {
             console.error('Error sending email:', error);
-            this.showNotification('Errore nell\'invio. Riprova più tardi o contattaci direttamente.', 'error');
+            this.showNotification(messages.error, 'error');
         } finally {
             // Reset button state
             submitButton.textContent = originalText;
@@ -399,6 +585,14 @@ class Analytics {
         document.querySelectorAll('section[id]').forEach(section => {
             sectionObserver.observe(section);
         });
+
+        // Track language switches
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.lang-option')) {
+                const lang = e.target.closest('.lang-option').dataset.lang;
+                this.trackEvent('language_switch', { target_language: lang });
+            }
+        });
     }
 
     getCurrentSection(element) {
@@ -444,6 +638,9 @@ class AccessibilityEnhancer {
                 document.querySelectorAll('.faq-item.active').forEach(item => {
                     item.querySelector('.faq-question').click();
                 });
+                
+                // Close language dropdown
+                document.getElementById('langDropdown')?.classList.remove('show');
             }
         });
     }
@@ -490,6 +687,12 @@ class AccessibilityEnhancer {
 
 // Initialize all components when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
+    // Check language preference first
+    LanguageSwitcher.checkLanguagePreference();
+    
+    // Initialize language switcher
+    new LanguageSwitcher();
+    
     // Initialize main visual effects
     new VisualEffects();
     
